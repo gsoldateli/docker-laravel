@@ -26,14 +26,14 @@ services:
     networks:
       - app-network
   redis:
-    build: .docker/mysql
+    image: redis:alpine
     container_name: redis
     expose:
       - 6379
     networks:
       - app-network
   db:
-    image: mysql:5.7
+    build: .docker/mysql
     command: --innodb-use-native-aio=0
     container_name: db
     restart: always
