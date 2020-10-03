@@ -22,9 +22,11 @@ steps:
 - id: "Rodando key generate .env"
   name: "gcr.io/cloud-builders/docker"
   args: ['exec','-t','app','php','/var/www/artisan','key:generate']
+
 - id: "Healthcheck database"
-  name: "gcr.io/cloud-builders/dockerize"
-  args: ['dockerize','-wait','tcp://db:3306','-timeout',' 120s']
+  name: "gcr.io/cloud-builders/docker"
+  args: ['exec','-t','app', 'dockerize','-wait','tcp://db:3306','-timeout',' 120s']
+
 - id: "Rodando migrate"
   name: "gcr.io/cloud-builders/docker"
   args: ['exec','-t','app','php','/var/www/artisan','migrate']
