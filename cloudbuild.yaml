@@ -25,7 +25,7 @@ steps:
 
 - id: "Healthcheck database"
   name: "gcr.io/cloud-builders/docker"
-  args: ['exec','-t','app', 'dockerize','-wait','tcp://db:3306','-timeout',' 120s']
+  args: ['exec','-t','app', 'dockerize','-wait','tcp://db:3306','-timeout','120s']
 
 - id: "Rodando migrate"
   name: "gcr.io/cloud-builders/docker"
